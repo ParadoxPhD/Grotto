@@ -20,11 +20,11 @@ public class Home extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //set up layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
 
-        //TODO: if login session expired, launch the login page
-
+        //this button lets you make posts
         final ImageButton makePost = findViewById(R.id.startPost);
 
         makePost.setOnClickListener(new View.OnClickListener()
@@ -39,34 +39,7 @@ public class Home extends AppCompatActivity
         });
 
         //now to actually get content
-        //this will be replaced by some api because apparently connecting directly to db from app is bad
-        /*ConnectionPlus conn = new ConnectionPlus();
-        plugit = conn.Connect();
-        Statement request;
-        String query = "SELECT POSTTEXT FROM dbo.Posts";
-        ResultSet response = null;
-        try
-        {request = plugit.createStatement();
-         response = request.executeQuery(query);}
-        catch (SQLException e)
-        {e.printStackTrace();}
 
-        if (response != null)
-        {
-            List<PostData> posts = new ArrayList<>();
-            PostData row = new PostData();
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragtrans = fragmentManager.beginTransaction();
-
-            for (int i = 0; i < row.post.size()/3; i++)
-            {
-                Fragment post = new PostData();
-                fragtrans.add(R.id.post, post);
-            }
-
-        }
-        else {}*/
 
 
 

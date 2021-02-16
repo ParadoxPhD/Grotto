@@ -35,5 +35,6 @@ public class TL_Activity extends Activity {
         // specify an adapter (see also next example)
         mAdapter = new TL_Data(data);
         recyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 }

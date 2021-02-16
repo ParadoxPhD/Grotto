@@ -1,10 +1,24 @@
 package com.grotto;
 
+import android.app.DownloadManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.HttpClientStack;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TL_Data extends RecyclerView.Adapter<TL_Data.TL_View>
@@ -25,6 +39,8 @@ public class TL_Data extends RecyclerView.Adapter<TL_Data.TL_View>
     //feeds the TL with data
     public TL_Data(List<String> myDataset) {
         mDataset = myDataset;
+
+
     }
 
     // Create new views (invoked by the layout manager)
@@ -42,6 +58,20 @@ public class TL_Data extends RecyclerView.Adapter<TL_Data.TL_View>
     public void onBindViewHolder(TL_View holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+
+        String url = "http://www.paradox.fyi/post.php";
+        final List<String> dataCheck = new ArrayList<String>() {};
+        JsonObjectRequest data = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>()
+        {
+            @Override
+            public void onResponse(JSONObject response)
+            {
+                dataCheck.set(0, response.toString());
+                Log.i("checkit", dataCheck.get(0));
+                mDataset = dataCheck;
+            }
+        }, null);
+
         holder.textView.setText(mDataset.get(position));
     }
 
