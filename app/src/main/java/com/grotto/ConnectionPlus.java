@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionPlus {
-    String ip = "2600:8805:4800:2e00:cfa:2b75:bc65:f981";
+    String ip = "x";
     String class_ = "net.sourceforge.jtds.jdbc.Driver";
     String db = "GrottoDB";
     String un = "ZRPC\\ZACH";
